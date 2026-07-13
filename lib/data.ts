@@ -157,7 +157,7 @@ export const projects: Project[] = [
   {
     slug: "chaingate-capital",
     title: "ChainGate Capital",
-    role: "Founder · Strategy",
+    role: "Independent Project · Strategy & Market Design",
     year: "2026",
     tags: ["Capital Markets", "Blockchain", "Strategy"],
     summary:
@@ -207,18 +207,18 @@ export const projects: Project[] = [
     year: "2026",
     tags: ["Revenue Modeling", "Fintech", "Interactive Model"],
     summary:
-      "A nine-stream interactive revenue model for the demand-capture layer of the U.S. touring economy — SaaS, marketplace take-rate, data licensing, and embedded finance, all priced off one proprietary airplay + venue dataset.",
+      "An eleven-stream interactive revenue model for the demand-capture layer of the U.S. touring economy — SaaS, marketplace take-rate, data licensing, and embedded finance, all priced off one proprietary airplay + venue dataset. The full model runs live on this page.",
     stats: [
-      { value: "9", label: "Revenue streams modeled" },
-      { value: "54,450", label: "Active venues targeted by Y5" },
-      { value: "33%", label: "Of the 165K U.S. venue universe" },
-      { value: "3", label: "Scenarios with live sensitivity grid" },
+      { value: "11", label: "Revenue streams modeled" },
+      { value: "$775.6M", label: "Year 5 revenue, base case" },
+      { value: "54,450", label: "Active venues targeted by Y5 (33% of 165K)" },
+      { value: "149%", label: "Revenue CAGR Y1–Y5, base case" },
     ],
     sections: [
       {
         heading: "The model",
         body: [
-          "Azimuth monetizes a single proprietary asset — a real-time airplay + venue demand graph — through nine compounding revenue lines: venue and marketplace SaaS, a 4.8% booking take-rate on gross guarantees, enterprise API and data licensing, artist guarantee financing, Parafin embedded capital, Stripe Connect embedded payments, advertising, hardware-as-a-service, and services.",
+          "Azimuth monetizes a single proprietary asset — a real-time airplay + venue demand graph — through eleven compounding revenue lines: venue and marketplace SaaS, a 4.8% booking take-rate on gross guarantees, enterprise API and data licensing, artist guarantee financing, Parafin embedded capital, Stripe Connect embedded payments, a Smart Ad Campaigns product filling the post-ToneDen vacuum, an A&R intelligence layer sold to labels, advertising, hardware-as-a-service, and services.",
           "Every parameter is explicit: venue ramp, guarantee compression down the long tail, ARPU decay as municipal venues onboard, financing attach rates, and partner rev-shares. The model computes a full P&L per year — GMV, COGS, gross margin, opex scaling, and EBITDA — under base, upside, and downside scenarios.",
         ],
       },
@@ -226,7 +226,7 @@ export const projects: Project[] = [
         heading: "Why it's built this way",
         body: [
           "Embedded lending and payments run through partners: Parafin underwrites and balance-sheets the loans, Stripe handles compliance. Azimuth keeps rev-share margin with zero originated capital — partner cuts without partner risk.",
-          "The deliverable is a fully interactive HTML model: scenario toggles, stream isolation, a stacked five-year revenue build, a Year 5 mix breakdown, and a take-rate × financing-attach sensitivity heatmap — a working analytical artifact, not a static deck.",
+          "Airplay velocity doubles as an A&R signal: the earliest leading indicator of an artist breaking, sold to labels as subscriptions and per-deal commissions. Every booked show lifts four revenue lines simultaneously — financing compounds on GMV as the marketplace grows.",
         ],
       },
     ],
@@ -236,8 +236,12 @@ export const projects: Project[] = [
         text: "Y1–Y2: municipal SaaS, booking take-rate, payments, Parafin pilots. Y3–Y4: financing at scale, ad network, HaaS. Y5+: the platform tax — data licensing, enterprise API, ticketing and insurance spreads.",
       },
       {
-        title: "One dataset, nine monetizations",
-        text: "Every booked show lifts four revenue lines simultaneously; financing compounds on GMV as the marketplace grows.",
+        title: "One dataset, eleven monetizations",
+        text: "Tooling, finance, ads, and A&R all read from the same source of truth — the airplay + venue demand graph.",
+      },
+      {
+        title: "The ToneDen vacuum",
+        text: "ToneDen was acquired and frozen in 2020; fanlink.to expired in 2024 and silently broke every smart link. Azimuth's ad product relaunches that surface with venue-grounded targeting no DSP can replicate.",
       },
     ],
   },

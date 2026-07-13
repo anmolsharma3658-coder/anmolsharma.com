@@ -4,6 +4,19 @@ import type { Metadata } from "next";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { projects } from "@/lib/data";
+import AzimuthModel from "@/components/projects/AzimuthModel";
+import NikkeiCharts from "@/components/projects/NikkeiCharts";
+import DeaCharts from "@/components/projects/DeaCharts";
+import GreenPlateCharts from "@/components/projects/GreenPlateCharts";
+import ChainGateCharts from "@/components/projects/ChainGateCharts";
+
+const INTERACTIVE: Record<string, React.ComponentType> = {
+  "azimuth-revenue-model": AzimuthModel,
+  "nikkei-volatility": NikkeiCharts,
+  "dea-accounting-efficiency": DeaCharts,
+  greenplate: GreenPlateCharts,
+  "chaingate-capital": ChainGateCharts,
+};
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
@@ -33,12 +46,13 @@ export default async function ProjectPage({
   if (idx === -1) notFound();
   const project = projects[idx];
   const next = projects[(idx + 1) % projects.length];
+  const Interactive = INTERACTIVE[project.slug];
 
   return (
     <>
       <Nav />
       <main className="flex-1">
-        <article className="mx-auto max-w-4xl px-6 pb-24 pt-20">
+        <article className="mx-auto max-w-5xl px-6 pb-24 pt-20">
           <Link
             href="/#work"
             className="text-sm text-ink-3 transition-colors hover:text-gold"
@@ -74,6 +88,8 @@ export default async function ProjectPage({
               </div>
             ))}
           </div>
+
+          {Interactive && <Interactive />}
 
           {project.sections.map((sec) => (
             <section key={sec.heading} className="mt-16">
