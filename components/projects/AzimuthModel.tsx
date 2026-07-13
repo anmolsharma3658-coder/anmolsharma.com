@@ -29,13 +29,16 @@ import {
   type ScenarioKey,
 } from "@/lib/azimuth";
 import { AXIS, CHART_COLORS, GRID_STROKE, TOOLTIP_STYLE } from "@/components/charts/theme";
+import CountUp from "@/components/motion/CountUp";
 
 const PARTNER_CUT = new Set(["parafin", "payments"]);
 
 function Stat({ value, label }: { value: string; label: string }) {
   return (
     <div className="bg-bg-card p-5">
-      <p className="font-display text-2xl text-ink">{value}</p>
+      <p className="font-display text-2xl text-ink">
+        <CountUp value={value} />
+      </p>
       <p className="mt-1 text-xs leading-snug text-ink-3">{label}</p>
     </div>
   );
@@ -85,7 +88,7 @@ export default function AzimuthModel() {
 
   return (
     <div className="mt-16">
-      <div className="flex items-center gap-3">
+      <div data-reveal className="flex items-center gap-3">
         <h2 className="font-display text-2xl text-ink">The live model</h2>
         <span className="rounded-full border border-gold-soft px-3 py-1 text-[11px] uppercase tracking-wider text-gold">
           Interactive

@@ -1,28 +1,33 @@
 import Link from "next/link";
 
+// Fixed smoked-glass bar: consistent over both light and dark sections,
+// so its colors are pinned rather than theme-driven.
 export default function Nav() {
   return (
-    <header className="sticky top-0 z-40 border-b border-line bg-bg/80 backdrop-blur-md">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/[0.06] bg-[#0a0b0e]/60 backdrop-blur-xl">
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <Link href="/" className="font-display text-lg tracking-tight text-ink">
+        <Link
+          href="/"
+          className="font-display text-lg tracking-tight text-[#ece9e2]"
+        >
           Anmol Sharma
-          <span className="ml-2 text-xs font-sans uppercase tracking-[0.2em] text-gold">
+          <span className="ml-3 font-sans text-[10px] uppercase tracking-[0.3em] text-[#c5a15f]">
             Portfolio
           </span>
         </Link>
-        <div className="flex items-center gap-6 text-sm text-ink-2">
-          <Link href="/#work" className="transition-colors hover:text-ink">
+        <div className="flex items-center gap-7 text-sm text-[#a3a8b0]">
+          <Link href="/#work" className="nav-link hover:text-[#ece9e2]">
             Work
           </Link>
-          <Link href="/#experience" className="transition-colors hover:text-ink">
+          <Link href="/#experience" className="nav-link hidden hover:text-[#ece9e2] sm:block">
             Experience
           </Link>
-          <Link href="/#skills" className="transition-colors hover:text-ink">
+          <Link href="/#skills" className="nav-link hidden hover:text-[#ece9e2] sm:block">
             Skills
           </Link>
           <a
             href="mailto:anmolsharma3658@gmail.com"
-            className="rounded-full border border-line-strong px-4 py-1.5 text-ink transition-colors hover:border-gold hover:text-gold"
+            className="rounded-full border border-[#2b3240] px-4 py-1.5 text-[#ece9e2] transition-colors duration-300 hover:border-[#c5a15f] hover:text-[#c5a15f]"
           >
             Contact
           </a>

@@ -45,7 +45,7 @@ const DIAGNOSTICS = [
 export default function DeaCharts() {
   return (
     <div className="mt-16 space-y-10">
-      <div>
+      <div data-reveal>
         <div className="flex items-center gap-3">
           <h2 className="font-display text-2xl text-ink">Frontier findings</h2>
           <span className="rounded-full border border-gold-soft px-3 py-1 text-[11px] uppercase tracking-wider text-gold">
