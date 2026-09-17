@@ -1,6 +1,6 @@
 # anmolsharma.com
 
-Personal portfolio for Anmol Sharma — private equity analyst, CFA Level III candidate, MBA (Finance) at Drexel University.
+Personal portfolio for Anmol Sharma — private equity analyst, CFA Level II candidate, MBA (Finance) at Drexel University.
 
 Built with Next.js (App Router), TypeScript, and Tailwind CSS v4.
 

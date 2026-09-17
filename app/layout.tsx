@@ -22,7 +22,7 @@ const fraunces = Fraunces({
 export const metadata: Metadata = {
   title: "Anmol Sharma — Finance · Strategy · Data",
   description:
-    "Private equity analyst and CFA Level III candidate. Portfolio of work across valuation, econometrics, capital markets strategy, and revenue modeling.",
+    "Private equity analyst and CFA Level II candidate. Portfolio of work across valuation, econometrics, capital markets strategy, and revenue modeling.",
 };
 
 export default function RootLayout({

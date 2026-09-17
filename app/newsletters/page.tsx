@@ -30,7 +30,8 @@ export default function NewslettersPage() {
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-2">
               Long-form research notes distilled from papers, case competitions,
-              and econometric work — written for decision-makers, not decks.
+              and econometric work — written for decision-makers who need the
+              thesis, the evidence, and the implication in one pass.
             </p>
           </div>
         </section>

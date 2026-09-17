@@ -31,7 +31,7 @@ export const newsletters: Newsletter[] = [
     image: "/newsletters/orbital-crowding.jpg",
     imageAlt: "Earth from orbit with satellite trails and debris paths",
     summary:
-      "An original multi-decade econometric study of orbital debris as a macroeconomic externality — forecasting $620B in annual economic drag by 2045 under business-as-usual, and proposing a five-body UN Space Governance Framework for COPUOS deliberation.",
+      "An original multi-decade econometric study of orbital debris as a macroeconomic externality — forecasting $620B in annual economic drag by 2045 under business-as-usual, and proposing a five-body UN Space Governance Framework for COPUOS deliberation. The core claim: LEO risk now prices like a systemic factor, not an aerospace niche cost.",
     stats: [
       { value: "$620B", label: "Annual economic drag by 2045 (BAU)" },
       { value: "0.847", label: "Debris → drag elasticity" },
@@ -43,7 +43,8 @@ export const newsletters: Newsletter[] = [
         heading: "The orbital commons at a tipping point",
         body: [
           "Low Earth Orbit — roughly 200 to 2,000 km above Earth — has become the most economically critical and most poorly governed common-pool resource on the planet. As of early 2025, more than 12,500 active satellites share LEO with an estimated 34,000 objects larger than 10 cm, ~900,000 fragments between 1–10 cm, and over 128 million micro-fragments too small to track but large enough to destroy a satellite on impact.",
-          "Conservative estimates put annual global economic value directly dependent on satellite infrastructure above $1.3 trillion. The thesis of this paper is that orbital crowding is not an aerospace niche concern — it is a systemic macroeconomic risk with concentration risk, correlated failures, underpriced externalities, and governance that has not kept pace with the system it is meant to regulate.",
+          "Conservative estimates put annual global economic value directly dependent on satellite infrastructure above $1.3 trillion. Navigation, timing, weather, broadband, and defense ISR all sit on the same crowded shell of altitude bands — which means a debris cascade is not a single-industry outage; it is a correlated shock to finance, aviation, logistics, and telecom at once.",
+          "The thesis of this paper is that orbital crowding is not an aerospace niche concern — it is a systemic macroeconomic risk with concentration risk, correlated failures, underpriced externalities, and governance that has not kept pace with the system it is meant to regulate.",
         ],
       },
       {
@@ -51,6 +52,7 @@ export const newsletters: Newsletter[] = [
         body: [
           "Using a 48-year panel (1978–2025) combining NASA, ESA, Satellite Industry Association, OECD, and Lloyd's space insurance data, a log-log OLS specification of annual economic drag on debris counts, active satellites, ASAT events, governance quality, and LEO utilisation explains 92.4% of variation in drag (R² = 0.924, F = 187.4, p < 0.001).",
           "The headline result: a 1% increase in tracked debris objects correlates with a 0.85% increase in aggregate annual economic drag (β = 0.847, p < 0.001). A one-unit improvement in the governance index (0–1) is associated with a 29.1% reduction in drag. The interaction between governance and debris density is negative and significant — better institutions reduce drag more when debris is high, which is exactly why early governance investment is economically compelling.",
+          "ASAT events enter as discrete regime shocks: they raise both the debris stock and the insurance-premium channel that feeds annual drag. The practical implication for capital markets is that orbital risk has a measurable beta — it can be forecast, stress-tested, and priced rather than treated as an unmodeled tail story.",
         ],
       },
       {
@@ -58,12 +60,14 @@ export const newsletters: Newsletter[] = [
         body: [
           "Under business-as-usual, total annual economic losses attributable to orbital crowding reach $620 billion by 2045, with disproportionate exposure in finance, aviation, and telecommunications. A moderate governance path (binding deorbit rules, usage fees, first-generation active debris removal) cuts that to ~$340B — 45% lower. A strong governance path, built around the five-body architecture proposed in the paper, stabilises annual drag near $185B — a $435B annual saving versus BAU.",
           "The Orbital Sustainability Index (OSI) — debris density × launch intensity, divided by governance quality × mitigation investment — is introduced as a single forward-looking metric. Under BAU, LEO breaches the critical OSI threshold between 2031 and 2033; under strong governance, as late as 2041.",
+          "About 32% of the global governance dividend accrues to developing economies that depend more heavily on satellite connectivity for banking, agriculture, and public services — a distributional result that reframes space sustainability as development policy, not only aerospace regulation.",
         ],
       },
       {
         heading: "A five-body UN architecture",
         body: [
           "The institutional proposal for COPUOS includes five bodies: a Space Sustainability Council, an Orbital Debris Registry and Monitoring Agency, a Space Economic Liability Tribunal, a Global Orbital Commons Fund, and a Dual-Use Technology Review Panel. Immediate recommendations include endorsing OSI publication, establishing the debris registry with a three-year $45M budget, and initiating treaty negotiations for liability and extended producer responsibility on a 5-year post-mission disposal standard.",
+          "The Fund is designed to finance active debris removal and capacity-building for late-entering space nations, financed partly by orbital usage fees — aligning who pollutes the commons with who pays to restore it. The Tribunal closes the liability gap that today leaves collision costs socialised while launch profits remain private.",
           "The window for building effective space governance without confronting a debris cascade is approximately 8–12 years under current trajectory models. The economics of orbital sustainability are unambiguous; the open question is institutional will.",
         ],
       },
@@ -90,14 +94,14 @@ export const newsletters: Newsletter[] = [
       "Full panel analysis of efficiency across Accounting Today’s rankings, 2016–2025",
     date: "2025-05-01",
     dateLabel: "May 1, 2025",
-    readMinutes: 12,
+    readMinutes: 13,
     tags: ["DEA", "Accounting", "Quantitative Methods"],
     series: "Research",
     author: "Anmol Sharma",
     image: "/newsletters/dea-accounting-efficiency.jpg",
     imageAlt: "Abstract efficiency frontier visualization over a glass desk",
     summary:
-      "A two-stage Data Envelopment Analysis of 999 firm-year observations from Accounting Today’s Top 100. Boutique specialists sit on the frontier; the Big 4 carry a 26–49% scale penalty; MAS% is the only statistically significant predictor of efficiency.",
+      "A two-stage Data Envelopment Analysis of 999 firm-year observations from Accounting Today’s Top 100. Boutique specialists sit on the frontier; the Big 4 carry a 26–49% scale penalty; MAS% is the only statistically significant predictor of efficiency — a practical lever for partners and PE sponsors who have been reading revenue tables as if they measured productivity.",
     stats: [
       { value: "999", label: "Firm-year observations" },
       { value: "10 yrs", label: "Panel: 2016–2025" },
@@ -130,6 +134,8 @@ export const newsletters: Newsletter[] = [
         heading: "Why it matters",
         body: [
           "A mid-size firm doing more with less is invisible in a revenue league table. DEA makes it visible — and names its efficient peer group as an explicit operational benchmark. For partners and PE sponsors, the practical takeaway is clear: shifting toward high-margin advisory work is the structural lever that actually predicts frontier proximity.",
+          "For consolidators, the Sleepers quadrant is the operating dashboard that revenue growth alone cannot provide. Until efficiency recovers toward the frontier, M&A-driven top-line expansion is an integration problem still in progress — not proof that the platform thesis has already worked.",
+          "The method travels: the same BCC-then-OLS stack can be applied to other professional-services rankings where league tables celebrate scale and obscure productivity — law, consulting, and specialty healthcare among them.",
         ],
       },
     ],
@@ -155,14 +161,14 @@ export const newsletters: Newsletter[] = [
       "A zero-compromise framework for 30% carbon reduction — prepared for Aramark",
     date: "2026-04-01",
     dateLabel: "April 1, 2026",
-    readMinutes: 11,
+    readMinutes: 12,
     tags: ["Sustainability", "Strategy", "Case Competition"],
     series: "Strategy",
     author: "Anmol Sharma",
     image: "/newsletters/greenplate-framework.jpg",
     imageAlt: "Sustainable plant-forward campus dining table setting",
     summary:
-      "A ten-pillar decarbonisation blueprint for Aramark’s 2026 Philly-Wide Case Competition: verified 30%+ carbon reduction in campus dining, cost-neutral in Year 1, $650K+ net surplus over three years — powered by menu science, AI forecasting, and CarbonIQ behavioural design.",
+      "A ten-pillar decarbonisation blueprint for Aramark’s 2026 Philly-Wide Case Competition: verified 30%+ carbon reduction in campus dining, cost-neutral in Year 1, $650K+ net surplus over three years — powered by menu science, AI forecasting, and CarbonIQ behavioural design. Sustainability framed as a P&L, not a poster campaign.",
     stats: [
       { value: "30%+", label: "Verified carbon reduction" },
       { value: "$650K+", label: "3-year net surplus" },
@@ -195,6 +201,8 @@ export const newsletters: Newsletter[] = [
         heading: "Implementation in three years",
         body: [
           "Year 1 builds the foundation: carbon baseline, AI forecasting, trayless dining, menu curation, CarbonIQ beta. Year 2 scales: full CarbonIQ, EV last-mile, induction kitchens, solar and smart HVAC. Year 3 optimises: 60%+ plant-forward menus, Verra carbon credits, public dashboard, and GreenPlate packaged as Aramark’s premium university product.",
+          "Governance sits alongside operations: a campus carbon council with student representation, quarterly SBTi-aligned third-party audits, and a public dashboard that makes progress visible to trustees and applicants — turning verified reduction into a recruitment and retention asset, not only a facilities KPI.",
+          "The product thesis for Aramark is packaging: once the playbook works on one flagship campus, GreenPlate becomes a priced premium offering with documented payback, not a one-off case-competition proposal.",
         ],
       },
     ],
@@ -220,14 +228,14 @@ export const newsletters: Newsletter[] = [
       "Does CPI surprise or industrial production news drive short-term Nikkei 225 volatility?",
     date: "2026-03-01",
     dateLabel: "March 1, 2026",
-    readMinutes: 8,
+    readMinutes: 10,
     tags: ["Econometrics", "GARCH", "Japan"],
     series: "Markets",
     author: "Anmol Sharma",
     image: "/newsletters/nikkei-volatility.jpg",
     imageAlt: "Tokyo skyline with abstract market volatility light trails",
     summary:
-      "A newsletter distillation of the ECON 560 study: ARMA / GARCH(1,1) / ARDL on 103 quarterly Nikkei observations. The yen dominates returns; volatility is highly persistent; Abenomics marks a confirmed structural break; BoJ rate changes are insignificant.",
+      "A newsletter distillation of the ECON 560 study: ARMA / GARCH(1,1) / ARDL on 103 quarterly Nikkei observations. The yen dominates returns; volatility is highly persistent; Abenomics marks a confirmed structural break; BoJ rate changes are insignificant — with implications for anyone still treating Japanese equity risk like a Western mean-reverting series.",
     stats: [
       { value: "103", label: "Quarterly observations" },
       { value: "0.906", label: "GARCH persistence (α+β)" },
@@ -239,12 +247,14 @@ export const newsletters: Newsletter[] = [
         heading: "The question",
         body: [
           "Does unexpected inflation (CPI surprise) or industrial production news drive short-term volatility in the Nikkei 225? The Japanese market is a natural laboratory: the Lost Decade created a volatility profile unlike Western markets; Abenomics (Dec 2012) shifted quarterly mean returns from −1.0% to +3.0%; and decades of ZIRP/NIRP leave almost no surprise component in announced rate changes.",
+          "The practical stake is whether a macro-surprise framework imported from U.S. equity research travels to Tokyo — or whether FX, crisis regimes, and policy credibility dominate the short-horizon return process instead.",
         ],
       },
       {
         heading: "Three-layer method",
         body: [
           "Data: Nikkei 225 quarterly log-returns, CPI surprises (Actual − HP-trend), ΔIP, USD/JPY, and BoJ policy rates — all verified I(0) by ADF. An AR(1) mean is selected by AIC/BIC over ARMA(p,q); ARDL(1,2,1) wins a 27-equation grid (AIC 7.348). Variance is modelled with GARCH(1,1). ARCH-LM confirms ARCH effects in raw residuals (LM = 12.4, p = 0.002) and resolves them post-GARCH (LM = 0.31, p = 0.58).",
+          "An intentional spurious-regression foil on price levels is included to show why students (and practitioners) who skip stationarity checks can obtain beautiful but meaningless R². Every specification choice is answered with a diagnostic, not a narrative preference.",
         ],
       },
       {
@@ -252,12 +262,14 @@ export const newsletters: Newsletter[] = [
         body: [
           "Yen dominates: a 1% depreciation vs. USD raises the Nikkei ~1.08% (p < 0.001) — Japan’s export-heavy index (Toyota, Sony, Honda) transmits FX straight into earnings. Volatility is highly persistent (α₁ = 0.184, β₁ = 0.722, sum 0.906; variance shock half-life ~7 quarters).",
           "Crisis dummies are large and significant — GFC −8.3%, COVID −11.6% structural shocks to quarterly means. Abenomics is a confirmed break (Chow F ≈ 3.8, p < 0.001): mean +4pp, volatility 11.1% → 9.2%, persistence ~0.94 → ~0.87. BoJ rate changes are insignificant (p = 0.71) — fully anticipated under ZIRP.",
+          "CPI and IP surprises survive in some nested specifications but lose economic and statistical punch once USD/JPY and crisis regimes are controlled for. For risk desks, that ranking of drivers is the usable result.",
         ],
       },
       {
         heading: "Preferred specification",
         body: [
           "ARDL mean + GARCH(1,1) variance lowers AIC from 7.601 (AR(1) baseline) to 7.162 and passes residual diagnostics: white noise, ARCH-LM, Breusch–Godfrey, Durbin–Watson. ARDL-GARCH is the correct framework for this data structure.",
+          "The investment implication is conservative: estimate Japanese equity risk on sub-samples around Abenomics, treat yen moves as first-order, and do not assume that a BoJ rate headline contains new information the way a Fed surprise often does.",
         ],
       },
     ],

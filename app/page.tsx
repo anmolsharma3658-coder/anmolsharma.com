@@ -185,6 +185,11 @@ export default function Home() {
                   <h2 className="font-display mt-4 max-w-3xl text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
                     Perspectives on capital, systems, and what matters now.
                   </h2>
+                  <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-2">
+                    Long-form research notes from diligence, econometrics, and
+                    strategy work — written to help decision-makers see the
+                    tradeoff, not just the headline.
+                  </p>
                 </div>
                 <Link
                   href="/newsletters"
