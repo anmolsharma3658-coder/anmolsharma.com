@@ -10,6 +10,7 @@ import {
   certifications,
   skillGroups,
 } from "@/lib/data";
+import { newsletters } from "@/lib/newsletters";
 
 const rd = (ms: number) => ({ "--rd": `${ms}ms` }) as React.CSSProperties;
 
@@ -173,8 +174,63 @@ export default function Home() {
             </div>
           </section>
 
+          {/* Newsletters — dark band between work and experience */}
+          <section id="newsletters" className="scroll-mt-16 bg-bg">
+            <div className="mx-auto max-w-6xl px-6 py-28">
+              <div data-reveal className="flex flex-wrap items-end justify-between gap-6">
+                <div>
+                  <p className="text-xs uppercase tracking-[0.35em] text-gold">
+                    Newsletters
+                  </p>
+                  <h2 className="font-display mt-4 max-w-2xl text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
+                    Research notes, distilled.
+                  </h2>
+                </div>
+                <Link
+                  href="/newsletters"
+                  className="nav-link text-sm text-ink-3 transition-colors duration-300 hover:text-gold"
+                >
+                  View all →
+                </Link>
+              </div>
+
+              <div className="mt-14 grid gap-5 md:grid-cols-2">
+                {[...newsletters]
+                  .sort((a, b) => b.date.localeCompare(a.date))
+                  .map((n, i) => (
+                    <Link
+                      key={n.slug}
+                      href={`/newsletters/${n.slug}`}
+                      data-reveal
+                      style={rd((i % 2) * 100)}
+                      className="card-lift group rounded-2xl border border-line bg-bg-card p-7 transition-colors duration-300 hover:border-gold-soft sm:p-8"
+                    >
+                      <div className="flex items-center gap-3 text-xs text-ink-3">
+                        <span className="uppercase tracking-[0.2em] text-gold">
+                          {n.tags[0]}
+                        </span>
+                        <span>·</span>
+                        <span>
+                          {n.dateLabel} · {n.readMinutes} min
+                        </span>
+                      </div>
+                      <h3 className="font-display mt-4 text-xl text-ink transition-colors duration-300 group-hover:text-gold sm:text-2xl">
+                        {n.title}
+                      </h3>
+                      <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-ink-2">
+                        {n.summary}
+                      </p>
+                      <p className="mt-5 text-sm text-ink-3 transition-colors duration-300 group-hover:text-gold">
+                        Read newsletter →
+                      </p>
+                    </Link>
+                  ))}
+              </div>
+            </div>
+          </section>
+
           {/* Experience — dark */}
-          <section id="experience" className="scroll-mt-16 bg-bg">
+          <section id="experience" className="scroll-mt-16 border-t border-line bg-bg">
             <div className="mx-auto max-w-6xl px-6 py-28">
               <div data-reveal>
                 <p className="text-xs uppercase tracking-[0.35em] text-gold">
