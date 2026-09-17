@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import Nav from "@/components/Nav";
@@ -5,104 +6,108 @@ import Footer from "@/components/Footer";
 import { newsletters } from "@/lib/newsletters";
 
 export const metadata: Metadata = {
-  title: "Newsletters — Anmol Sharma",
+  title: "Insights — Anmol Sharma",
   description:
-    "Long-form research notes on econometrics, efficiency analysis, space governance, and sustainability strategy.",
+    "Perspectives and research notes on markets, governance, efficiency, and strategy.",
 };
-
-const rd = (ms: number) => ({ "--rd": `${ms}ms` }) as React.CSSProperties;
 
 export default function NewslettersPage() {
   const sorted = [...newsletters].sort((a, b) => b.date.localeCompare(a.date));
+  const [featured, ...rest] = sorted;
 
   return (
     <>
       <Nav />
       <main className="flex-1">
-        <header className="theme-light relative overflow-hidden bg-bg">
-          <div aria-hidden className="pointer-events-none absolute inset-0">
-            <div
-              data-parallax="0.12"
-              className="absolute -top-1/3 right-[-10%] h-[60vh] w-[60vh] rounded-full"
-              style={{
-                background:
-                  "radial-gradient(circle at center, rgba(151,120,60,0.12), transparent 60%)",
-              }}
-            />
-          </div>
-          <div className="relative mx-auto max-w-6xl px-6 pb-16 pt-32">
-            <p
-              data-reveal
-              className="text-xs uppercase tracking-[0.35em] text-gold"
-            >
-              Newsletters
+        {/* McKinsey-style light editorial index */}
+        <section className="theme-light bg-bg">
+          <div className="mx-auto max-w-6xl px-6 pb-10 pt-32">
+            <p className="text-xs font-medium uppercase tracking-[0.28em] text-gold">
+              Insights
             </p>
-            <h1
-              data-reveal
-              style={rd(80)}
-              className="font-display mt-4 max-w-3xl text-4xl leading-tight tracking-tight text-ink sm:text-6xl"
-            >
-              Research notes, distilled.
+            <h1 className="font-display mt-4 max-w-4xl text-4xl leading-[1.1] tracking-tight text-ink sm:text-6xl">
+              Four perspectives on capital, systems, and what matters now.
             </h1>
-            <p
-              data-reveal
-              style={rd(140)}
-              className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-2"
-            >
-              Long-form write-ups from papers, case competitions, and econometric
-              work — the arguments and numbers behind the case studies.
+            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-2">
+              Long-form research notes distilled from papers, case competitions,
+              and econometric work — written for decision-makers, not decks.
             </p>
           </div>
-        </header>
+        </section>
 
+        {/* Featured story */}
         <section className="theme-light border-t border-line bg-bg">
-          <div className="mx-auto max-w-6xl px-6 py-20">
-            <div className="grid gap-6 md:grid-cols-2">
-              {sorted.map((n, i) => (
+          <div className="mx-auto max-w-6xl px-6 py-14">
+            <Link
+              href={`/newsletters/${featured.slug}`}
+              className="group grid items-center gap-10 lg:grid-cols-2"
+            >
+              <div className="relative aspect-[16/10] overflow-hidden bg-bg-card">
+                <Image
+                  src={featured.image}
+                  alt={featured.imageAlt}
+                  fill
+                  priority
+                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+              </div>
+              <div>
+                <p className="text-xs font-medium uppercase tracking-[0.22em] text-gold">
+                  {featured.series} · Featured
+                </p>
+                <h2 className="font-display mt-4 text-3xl leading-tight text-ink transition-colors duration-300 group-hover:text-gold sm:text-4xl">
+                  {featured.title}
+                </h2>
+                <p className="mt-4 text-base leading-relaxed text-ink-2">
+                  {featured.summary}
+                </p>
+                <p className="mt-6 text-sm text-ink-3">
+                  {featured.author} · {featured.dateLabel} · {featured.readMinutes}{" "}
+                  min read
+                </p>
+                <p className="mt-8 text-sm font-medium text-ink transition-colors duration-300 group-hover:text-gold">
+                  Read the article →
+                </p>
+              </div>
+            </Link>
+          </div>
+        </section>
+
+        {/* Article grid */}
+        <section className="theme-light border-t border-line bg-bg">
+          <div className="mx-auto max-w-6xl px-6 py-16">
+            <p className="text-xs font-medium uppercase tracking-[0.22em] text-ink-3">
+              More insights
+            </p>
+            <div className="mt-10 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
+              {rest.map((n) => (
                 <Link
                   key={n.slug}
                   href={`/newsletters/${n.slug}`}
-                  data-reveal
-                  style={rd((i % 2) * 100)}
-                  className={`card-lift group flex flex-col justify-between rounded-2xl border border-line bg-bg-card p-8 hover:border-gold-soft sm:p-10 ${
-                    i === 0 ? "md:col-span-2" : ""
-                  }`}
+                  className="group flex flex-col"
                 >
-                  <div>
-                    <div className="flex flex-wrap items-center gap-2">
-                      {n.tags.map((t) => (
-                        <span
-                          key={t}
-                          className="rounded-full border border-line-strong px-3 py-1 text-[11px] uppercase tracking-wider text-ink-3"
-                        >
-                          {t}
-                        </span>
-                      ))}
-                      <span className="ml-auto text-sm text-ink-3">
-                        {n.dateLabel} · {n.readMinutes} min
-                      </span>
-                    </div>
-                    <h2 className="font-display mt-6 text-2xl text-ink transition-colors duration-300 group-hover:text-gold sm:text-3xl">
-                      {n.title}
-                    </h2>
-                    <p className="mt-2 text-sm text-gold">{n.subtitle}</p>
-                    <p className="mt-4 max-w-3xl leading-relaxed text-ink-2">
-                      {n.summary}
-                    </p>
+                  <div className="relative aspect-[16/10] overflow-hidden bg-bg-card">
+                    <Image
+                      src={n.image}
+                      alt={n.imageAlt}
+                      fill
+                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
                   </div>
-                  <div className="mt-8 flex items-center justify-between">
-                    <div className="flex gap-8">
-                      {n.stats.slice(0, i === 0 ? 4 : 2).map((s) => (
-                        <div key={s.label} className={i === 0 ? "" : "hidden sm:block"}>
-                          <p className="font-display text-xl text-ink">{s.value}</p>
-                          <p className="mt-1 max-w-36 text-xs text-ink-3">{s.label}</p>
-                        </div>
-                      ))}
-                    </div>
-                    <span className="nav-link shrink-0 text-sm text-ink-3 transition-colors duration-300 group-hover:text-gold">
-                      Read →
-                    </span>
-                  </div>
+                  <p className="mt-5 text-[11px] font-medium uppercase tracking-[0.2em] text-gold">
+                    {n.series}
+                  </p>
+                  <h3 className="font-display mt-2 text-xl leading-snug text-ink transition-colors duration-300 group-hover:text-gold">
+                    {n.title}
+                  </h3>
+                  <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-ink-2">
+                    {n.summary}
+                  </p>
+                  <p className="mt-4 text-xs text-ink-3">
+                    {n.dateLabel} · {n.readMinutes} min read
+                  </p>
                 </Link>
               ))}
             </div>

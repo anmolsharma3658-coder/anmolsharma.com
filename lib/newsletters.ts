@@ -6,6 +6,10 @@ export type Newsletter = {
   dateLabel: string;
   readMinutes: number;
   tags: string[];
+  series: string;
+  author: string;
+  image: string;
+  imageAlt: string;
   summary: string;
   stats: { value: string; label: string }[];
   sections: { heading: string; body: string[] }[];
@@ -19,9 +23,13 @@ export const newsletters: Newsletter[] = [
     subtitle:
       "Commercial impact, econometric forecasting, and a UN space governance architecture",
     date: "2025-09-01",
-    dateLabel: "Sep 2025",
+    dateLabel: "September 1, 2025",
     readMinutes: 14,
     tags: ["Space Governance", "Econometrics", "Systemic Risk"],
+    series: "Perspectives",
+    author: "Anmol Sharma",
+    image: "/newsletters/orbital-crowding.jpg",
+    imageAlt: "Earth from orbit with satellite trails and debris paths",
     summary:
       "An original multi-decade econometric study of orbital debris as a macroeconomic externality — forecasting $620B in annual economic drag by 2045 under business-as-usual, and proposing a five-body UN Space Governance Framework for COPUOS deliberation.",
     stats: [
@@ -81,9 +89,13 @@ export const newsletters: Newsletter[] = [
     subtitle:
       "Full panel analysis of efficiency across Accounting Today’s rankings, 2016–2025",
     date: "2025-05-01",
-    dateLabel: "May 2025",
+    dateLabel: "May 1, 2025",
     readMinutes: 12,
     tags: ["DEA", "Accounting", "Quantitative Methods"],
+    series: "Research",
+    author: "Anmol Sharma",
+    image: "/newsletters/dea-accounting-efficiency.jpg",
+    imageAlt: "Abstract efficiency frontier visualization over a glass desk",
     summary:
       "A two-stage Data Envelopment Analysis of 999 firm-year observations from Accounting Today’s Top 100. Boutique specialists sit on the frontier; the Big 4 carry a 26–49% scale penalty; MAS% is the only statistically significant predictor of efficiency.",
     stats: [
@@ -142,9 +154,13 @@ export const newsletters: Newsletter[] = [
     subtitle:
       "A zero-compromise framework for 30% carbon reduction — prepared for Aramark",
     date: "2026-04-01",
-    dateLabel: "Apr 2026",
+    dateLabel: "April 1, 2026",
     readMinutes: 11,
     tags: ["Sustainability", "Strategy", "Case Competition"],
+    series: "Strategy",
+    author: "Anmol Sharma",
+    image: "/newsletters/greenplate-framework.jpg",
+    imageAlt: "Sustainable plant-forward campus dining table setting",
     summary:
       "A ten-pillar decarbonisation blueprint for Aramark’s 2026 Philly-Wide Case Competition: verified 30%+ carbon reduction in campus dining, cost-neutral in Year 1, $650K+ net surplus over three years — powered by menu science, AI forecasting, and CarbonIQ behavioural design.",
     stats: [
@@ -203,9 +219,13 @@ export const newsletters: Newsletter[] = [
     subtitle:
       "Does CPI surprise or industrial production news drive short-term Nikkei 225 volatility?",
     date: "2026-03-01",
-    dateLabel: "Mar 2026",
+    dateLabel: "March 1, 2026",
     readMinutes: 8,
     tags: ["Econometrics", "GARCH", "Japan"],
+    series: "Markets",
+    author: "Anmol Sharma",
+    image: "/newsletters/nikkei-volatility.jpg",
+    imageAlt: "Tokyo skyline with abstract market volatility light trails",
     summary:
       "A newsletter distillation of the ECON 560 study: ARMA / GARCH(1,1) / ARDL on 103 quarterly Nikkei observations. The yen dominates returns; volatility is highly persistent; Abenomics marks a confirmed structural break; BoJ rate changes are insignificant.",
     stats: [

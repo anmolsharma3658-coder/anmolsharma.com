@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
@@ -5,8 +6,6 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import CountUp from "@/components/motion/CountUp";
 import { newsletters } from "@/lib/newsletters";
-
-const rd = (ms: number) => ({ "--rd": `${ms}ms` }) as React.CSSProperties;
 
 export function generateStaticParams() {
   return newsletters.map((n) => ({ slug: n.slug }));
@@ -23,6 +22,11 @@ export async function generateMetadata({
   return {
     title: `${issue.title} — Anmol Sharma`,
     description: issue.summary,
+    openGraph: {
+      title: issue.title,
+      description: issue.summary,
+      images: [issue.image],
+    },
   };
 }
 
@@ -35,71 +39,65 @@ export default async function NewsletterPage({
   const idx = newsletters.findIndex((n) => n.slug === slug);
   if (idx === -1) notFound();
   const issue = newsletters[idx];
-  const next = newsletters[(idx + 1) % newsletters.length];
+  const related = newsletters.filter((n) => n.slug !== slug).slice(0, 3);
 
   return (
     <>
       <Nav />
       <main className="flex-1">
-        <header className="theme-light relative overflow-hidden bg-bg">
-          <div aria-hidden className="pointer-events-none absolute inset-0">
-            <div
-              data-parallax="0.14"
-              className="absolute -top-1/3 right-[-14%] h-[65vh] w-[65vh] rounded-full"
-              style={{
-                background:
-                  "radial-gradient(circle at center, rgba(151,120,60,0.13), transparent 60%)",
-              }}
-            />
-          </div>
-
-          <div className="relative mx-auto max-w-3xl px-6 pb-16 pt-32">
+        {/* Article header — McKinsey blog style */}
+        <header className="theme-light bg-bg">
+          <div className="mx-auto max-w-3xl px-6 pb-10 pt-32">
             <Link
               href="/newsletters"
-              className="nav-link text-sm text-ink-3 transition-colors duration-300 hover:text-gold"
+              className="text-sm text-ink-3 transition-colors duration-300 hover:text-gold"
             >
-              ← All newsletters
+              ← Insights
             </Link>
-
-            <div data-reveal className="mt-10 flex flex-wrap items-center gap-2">
-              {issue.tags.map((t) => (
-                <span
-                  key={t}
-                  className="rounded-full border border-line-strong px-3 py-1 text-[11px] uppercase tracking-wider text-ink-3"
-                >
-                  {t}
-                </span>
-              ))}
-              <span className="ml-auto text-sm text-ink-3">
-                {issue.dateLabel} · {issue.readMinutes} min read
-              </span>
-            </div>
-
-            <h1
-              data-reveal
-              style={rd(80)}
-              className="font-display mt-6 text-4xl leading-tight tracking-tight text-ink sm:text-5xl"
-            >
+            <p className="mt-10 text-xs font-medium uppercase tracking-[0.28em] text-gold">
+              {issue.series}
+            </p>
+            <h1 className="font-display mt-4 text-4xl leading-[1.12] tracking-tight text-ink sm:text-5xl">
               {issue.title}
             </h1>
-            <p data-reveal style={rd(120)} className="mt-3 text-gold">
+            <p className="mt-5 text-xl leading-relaxed text-ink-2">
               {issue.subtitle}
             </p>
-            <p
-              data-reveal
-              style={rd(160)}
-              className="mt-6 text-lg leading-relaxed text-ink-2"
-            >
-              {issue.summary}
-            </p>
+            <div className="mt-8 flex flex-wrap items-center gap-x-4 gap-y-2 border-y border-line py-4 text-sm text-ink-3">
+              <span className="font-medium text-ink">{issue.author}</span>
+              <span aria-hidden>·</span>
+              <time dateTime={issue.date}>{issue.dateLabel}</time>
+              <span aria-hidden>·</span>
+              <span>{issue.readMinutes} min read</span>
+            </div>
+          </div>
+        </header>
 
-            <div
-              data-reveal
-              style={rd(200)}
-              className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-line bg-line sm:grid-cols-4"
-            >
+        {/* Full-bleed hero image */}
+        <div className="theme-light bg-bg">
+          <div className="mx-auto max-w-5xl px-6">
+            <div className="relative aspect-[16/9] overflow-hidden bg-bg-card">
+              <Image
+                src={issue.image}
+                alt={issue.imageAlt}
+                fill
+                priority
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 1024px"
+              />
+            </div>
+            <p className="mt-3 text-xs text-ink-3">{issue.imageAlt}</p>
+          </div>
+        </div>
+
+        {/* Body */}
+        <article className="theme-light bg-bg">
+          <div className="mx-auto max-w-3xl px-6 py-14">
+            <p className="text-xl leading-relaxed text-ink-2">{issue.summary}</p>
+
+            <div className="mt-12 grid grid-cols-2 gap-6 border-y border-line py-8 sm:grid-cols-4">
               {issue.stats.map((s) => (
-                <div key={s.label} className="bg-bg-card p-5">
+                <div key={s.label}>
                   <p className="font-display text-2xl text-ink">
                     <CountUp value={s.value} />
                   </p>
@@ -107,18 +105,14 @@ export default async function NewsletterPage({
                 </div>
               ))}
             </div>
-          </div>
-        </header>
 
-        <article className="bg-bg">
-          <div className="mx-auto max-w-3xl px-6 py-20">
-            {issue.sections.map((sec, i) => (
-              <section key={sec.heading} data-reveal style={rd(i * 60)} className="mt-14 first:mt-0">
+            {issue.sections.map((sec) => (
+              <section key={sec.heading} className="mt-14">
                 <h2 className="font-display text-2xl text-ink sm:text-3xl">
                   {sec.heading}
                 </h2>
                 {sec.body.map((para) => (
-                  <p key={para.slice(0, 48)} className="mt-5 leading-relaxed text-ink-2">
+                  <p key={para.slice(0, 48)} className="mt-5 text-[17px] leading-[1.75] text-ink-2">
                     {para}
                   </p>
                 ))}
@@ -126,32 +120,55 @@ export default async function NewsletterPage({
             ))}
 
             {issue.takeaways && (
-              <section data-reveal className="mt-16 grid gap-5 sm:grid-cols-3">
-                {issue.takeaways.map((t) => (
-                  <div
-                    key={t.title}
-                    className="rounded-xl border border-line bg-bg-card p-6"
-                  >
-                    <h3 className="text-sm font-medium text-gold">{t.title}</h3>
-                    <p className="mt-3 text-sm leading-relaxed text-ink-2">{t.text}</p>
-                  </div>
-                ))}
+              <section className="mt-16 border-t border-line pt-12">
+                <h2 className="font-display text-2xl text-ink">Key takeaways</h2>
+                <div className="mt-8 space-y-8">
+                  {issue.takeaways.map((t, i) => (
+                    <div key={t.title} className="grid gap-2 sm:grid-cols-[48px_1fr]">
+                      <p className="font-display text-2xl text-gold">
+                        {String(i + 1).padStart(2, "0")}
+                      </p>
+                      <div>
+                        <h3 className="text-lg font-medium text-ink">{t.title}</h3>
+                        <p className="mt-2 leading-relaxed text-ink-2">{t.text}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </section>
             )}
-
-            <div className="mt-20 border-t border-line pt-10">
-              <p className="text-xs uppercase tracking-[0.3em] text-ink-3">
-                Next newsletter
-              </p>
-              <Link
-                href={`/newsletters/${next.slug}`}
-                className="font-display mt-3 inline-block text-2xl text-ink transition-colors duration-300 hover:text-gold"
-              >
-                {next.title} →
-              </Link>
-            </div>
           </div>
         </article>
+
+        {/* Related */}
+        <section className="theme-light border-t border-line bg-bg">
+          <div className="mx-auto max-w-6xl px-6 py-16">
+            <p className="text-xs font-medium uppercase tracking-[0.22em] text-ink-3">
+              More insights
+            </p>
+            <div className="mt-10 grid gap-10 sm:grid-cols-3">
+              {related.map((n) => (
+                <Link key={n.slug} href={`/newsletters/${n.slug}`} className="group">
+                  <div className="relative aspect-[16/10] overflow-hidden bg-bg-card">
+                    <Image
+                      src={n.image}
+                      alt={n.imageAlt}
+                      fill
+                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                      sizes="(max-width: 640px) 100vw, 33vw"
+                    />
+                  </div>
+                  <p className="mt-4 text-[11px] font-medium uppercase tracking-[0.2em] text-gold">
+                    {n.series}
+                  </p>
+                  <h3 className="font-display mt-2 text-lg leading-snug text-ink transition-colors duration-300 group-hover:text-gold">
+                    {n.title}
+                  </h3>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
       </main>
       <Footer />
     </>

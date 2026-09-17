@@ -174,63 +174,103 @@ export default function Home() {
             </div>
           </section>
 
-          {/* Newsletters — dark band between work and experience */}
-          <section id="newsletters" className="scroll-mt-16 bg-bg">
+          {/* Insights — McKinsey-style light editorial band */}
+          <section id="newsletters" className="theme-light scroll-mt-16 border-t border-line bg-bg">
             <div className="mx-auto max-w-6xl px-6 py-28">
-              <div data-reveal className="flex flex-wrap items-end justify-between gap-6">
+              <div className="flex flex-wrap items-end justify-between gap-6">
                 <div>
-                  <p className="text-xs uppercase tracking-[0.35em] text-gold">
-                    Newsletters
+                  <p className="text-xs font-medium uppercase tracking-[0.28em] text-gold">
+                    Insights
                   </p>
-                  <h2 className="font-display mt-4 max-w-2xl text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
-                    Research notes, distilled.
+                  <h2 className="font-display mt-4 max-w-3xl text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
+                    Perspectives on capital, systems, and what matters now.
                   </h2>
                 </div>
                 <Link
                   href="/newsletters"
-                  className="nav-link text-sm text-ink-3 transition-colors duration-300 hover:text-gold"
+                  className="text-sm font-medium text-ink transition-colors duration-300 hover:text-gold"
                 >
-                  View all →
+                  View all insights →
                 </Link>
               </div>
 
-              <div className="mt-14 grid gap-5 md:grid-cols-2">
-                {[...newsletters]
-                  .sort((a, b) => b.date.localeCompare(a.date))
-                  .map((n, i) => (
+              {(() => {
+                const sorted = [...newsletters].sort((a, b) =>
+                  b.date.localeCompare(a.date),
+                );
+                const [featured, ...rest] = sorted;
+                return (
+                  <>
                     <Link
-                      key={n.slug}
-                      href={`/newsletters/${n.slug}`}
-                      data-reveal
-                      style={rd((i % 2) * 100)}
-                      className="card-lift group rounded-2xl border border-line bg-bg-card p-7 transition-colors duration-300 hover:border-gold-soft sm:p-8"
+                      href={`/newsletters/${featured.slug}`}
+                      className="group mt-14 grid items-center gap-10 border-t border-line pt-14 lg:grid-cols-2"
                     >
-                      <div className="flex items-center gap-3 text-xs text-ink-3">
-                        <span className="uppercase tracking-[0.2em] text-gold">
-                          {n.tags[0]}
-                        </span>
-                        <span>·</span>
-                        <span>
-                          {n.dateLabel} · {n.readMinutes} min
-                        </span>
+                      <div className="relative aspect-[16/10] overflow-hidden bg-bg-card">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={featured.image}
+                          alt={featured.imageAlt}
+                          className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                        />
                       </div>
-                      <h3 className="font-display mt-4 text-xl text-ink transition-colors duration-300 group-hover:text-gold sm:text-2xl">
-                        {n.title}
-                      </h3>
-                      <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-ink-2">
-                        {n.summary}
-                      </p>
-                      <p className="mt-5 text-sm text-ink-3 transition-colors duration-300 group-hover:text-gold">
-                        Read newsletter →
-                      </p>
+                      <div>
+                        <p className="text-xs font-medium uppercase tracking-[0.22em] text-gold">
+                          {featured.series} · Featured
+                        </p>
+                        <h3 className="font-display mt-4 text-3xl leading-tight text-ink transition-colors duration-300 group-hover:text-gold sm:text-4xl">
+                          {featured.title}
+                        </h3>
+                        <p className="mt-4 leading-relaxed text-ink-2">
+                          {featured.summary}
+                        </p>
+                        <p className="mt-6 text-sm text-ink-3">
+                          {featured.author} · {featured.dateLabel} ·{" "}
+                          {featured.readMinutes} min read
+                        </p>
+                        <p className="mt-8 text-sm font-medium text-ink transition-colors duration-300 group-hover:text-gold">
+                          Read the article →
+                        </p>
+                      </div>
                     </Link>
-                  ))}
-              </div>
+
+                    <div className="mt-16 grid gap-x-8 gap-y-12 border-t border-line pt-14 sm:grid-cols-3">
+                      {rest.map((n) => (
+                        <Link
+                          key={n.slug}
+                          href={`/newsletters/${n.slug}`}
+                          className="group flex flex-col"
+                        >
+                          <div className="relative aspect-[16/10] overflow-hidden bg-bg-card">
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img
+                              src={n.image}
+                              alt={n.imageAlt}
+                              className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                            />
+                          </div>
+                          <p className="mt-5 text-[11px] font-medium uppercase tracking-[0.2em] text-gold">
+                            {n.series}
+                          </p>
+                          <h3 className="font-display mt-2 text-xl leading-snug text-ink transition-colors duration-300 group-hover:text-gold">
+                            {n.title}
+                          </h3>
+                          <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-ink-2">
+                            {n.summary}
+                          </p>
+                          <p className="mt-4 text-xs text-ink-3">
+                            {n.dateLabel} · {n.readMinutes} min read
+                          </p>
+                        </Link>
+                      ))}
+                    </div>
+                  </>
+                );
+              })()}
             </div>
           </section>
 
           {/* Experience — dark */}
-          <section id="experience" className="scroll-mt-16 border-t border-line bg-bg">
+          <section id="experience" className="scroll-mt-16 bg-bg">
             <div className="mx-auto max-w-6xl px-6 py-28">
               <div data-reveal>
                 <p className="text-xs uppercase tracking-[0.35em] text-gold">

@@ -19,8 +19,8 @@ export default function Nav() {
           <Link href="/#work" className="nav-link hover:text-[#ece9e2]">
             Work
           </Link>
-          <Link href="/newsletters" className="nav-link hover:text-[#ece9e2]">
-            Newsletters
+          <Link href="/#newsletters" className="nav-link hover:text-[#ece9e2]">
+            Insights
           </Link>
           <Link href="/#experience" className="nav-link hidden hover:text-[#ece9e2] sm:block">
             Experience
